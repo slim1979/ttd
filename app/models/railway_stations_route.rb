@@ -1,4 +1,4 @@
 class RailwayStationsRoute < ApplicationRecord
-  belongs_to :railway_stations
-  belongs_to :routes
+  belongs_to :railway_station
+  belongs_to :route
 end

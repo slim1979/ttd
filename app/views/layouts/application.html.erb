@@ -9,9 +9,7 @@
   </head>
 
   <body>
-    <%= link_to 'Список станций', railway_stations_path, class: "btn btn-large btn-primary" %>
-    <%= link_to 'Список поездов', trains_path, class: "btn btn-large btn-primary" %>
-    <%= link_to 'Список маршрутов', routes_path, class: "btn btn-large btn-primary" %>
+    <%= render 'layouts/list' %>
     <%= yield %>
     <%= render 'layouts/footer' %>
   </body>

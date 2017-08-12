@@ -1,9 +1,20 @@
 <p id="notice"><%= notice %></p>
 
 <p>
-  <strong>Title:</strong>
+  <strong>Наименование:</strong>
   <%= @railway_station.title %>
 </p>
 
-<%= link_to 'Edit', edit_railway_station_path(@railway_station) %> |
-<%= link_to 'Back', railway_stations_path %>
+<% if @railway_station.routes.empty? %>
+  <p>Станция не входит ни в один маршрут</p>
+<% else %>
+  <p>Станция входит в следующие маршруты:</p>
+  <% @railway_station.routes.each do |s| %>
+    <ul>
+      <li><%= s.title %></li>
+    </ul>
+  <% end %>
+<% end %>
+
+<%= link_to 'Редактировать', edit_railway_station_path(@railway_station) %> |
+<%= link_to 'Назад', railway_stations_path %>

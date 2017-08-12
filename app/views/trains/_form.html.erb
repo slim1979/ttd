@@ -17,6 +17,6 @@
   </div>
 
   <div class="actions">
-    <%= form.submit %>
+    <%= form.submit "#{ @train.new_record? ? 'Создать поезд' : 'Изменить поезд'}" %>
   </div>
 <% end %>

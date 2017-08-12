@@ -1,0 +1,20 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Вагон номер:</strong>
+  <%= @van.id %><br />
+  <strong>Тип вагона:</strong>
+  <%= @van.kind %>
+</p>
+
+<p>
+  <strong>Текущий поезд:</strong>
+  <% if @van.train %>
+    <%= @van.train.number %>
+  <% else %>
+    Не указано
+  <% end %>
+</p>
+
+<%= link_to 'Редактировать', edit_van_path(@van) %> |
+<%= link_to 'Назад', vans_path %>

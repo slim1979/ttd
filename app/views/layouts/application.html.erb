@@ -9,12 +9,10 @@
   </head>
 
   <body>
+    <%= link_to 'Список станций', railway_stations_path, class: "btn btn-large btn-primary" %>
+    <%= link_to 'Список поездов', trains_path, class: "btn btn-large btn-primary" %>
+    <%= link_to 'Список маршрутов', routes_path, class: "btn btn-large btn-primary" %>
     <%= yield %>
-    <footer>
-      <p>
-        &#169 2017 Ефимов Николай.</br>
-        Учебный проект в онлайн-школе <%= link_to 'Thinknetica', 'http://thinknetica.com' %>
-      </p>
-    </footer>
+    <%= render 'layouts/footer' %>
   </body>
 </html>

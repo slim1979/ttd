@@ -1,0 +1,7 @@
+<tr>
+  <td><%= van.id %></td>
+  <td><%= van.kind %></td>
+  <td><%= link_to 'Показать', van %></td>
+  <td><%= link_to 'Изменить', edit_van_path(van) %></td>
+  <td><%= link_to 'Удалить', van, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+</tr>

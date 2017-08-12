@@ -6,6 +6,11 @@
     <%= form.text_field :number, id: :train_number %>
   </div>
 
+  <div class="field">
+    <%= form.label :current_station, 'Текущая станция' %>
+    <%= form.collection_select :current_station, RailwayStation.all, :id, :title %>
+  </div>
+
   <div class="actions">
     <%= form.submit "#{ @train.new_record? ? 'Создать поезд' : 'Изменить поезд'}" %>
   </div>

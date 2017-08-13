@@ -5,4 +5,18 @@ class Train < ApplicationRecord
   has_many :vans
 
   validates :number, presence: true
+
+  def coupe_vans
+    vans.where(kind: 'Купе')
+  end
+
+  def platz_vans
+    vans.where(kind: 'Плацкарт')
+  end
+
+  def seats(type, kind)
+    all = 0
+    send("#{type}_vans").each { |van| all += van.send("#{kind}_seats") }
+    all
+  end
 end

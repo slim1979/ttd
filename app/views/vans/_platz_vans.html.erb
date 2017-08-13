@@ -1,0 +1,11 @@
+<% @platz_vans = Van.where(kind: 'Плацкарт', train: @train) %>
+<% unless @platz_vans.count.zero? %>
+  <p>
+    <strong>Плацкартных вагонов в составе поезда: </strong><%= @platz_vans.count %><br />
+    Плацкартных мест:
+    <ul>
+      <li>Верхних: <%= @all = 0; @platz_vans.each{ |van| @all += van.up_seats }; @all %></li>
+      <li>Нижних: <%= @all = 0; @platz_vans.each{ |van| @all += van.down_seats }; @all %></li>
+    </ul>
+  </p>
+<% end %>

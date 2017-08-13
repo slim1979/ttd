@@ -1,20 +1,21 @@
 <p id="notice"><%= notice %></p>
+  <h1>Доступные вагоны:</h1>
 
-<h1>Доступные вагоны:</h1>
+  <% if !@vans.count.zero? %>
+    <table>
+      <thead>
+        <tr>
+          <th>#</th>
+          <th>Тип</th>
+        </tr>
+      </thead>
 
-<table>
-  <thead>
-    <tr>
-      <th>#</th>
-      <th>Тип</th>
-    </tr>
-  </thead>
+      <tbody><%= render @vans %></tbody>
+    </table>
+  <% else %>
+  <p>Нет доступных вагонов</p>
+  <% end %>
 
-  <tbody>
-    <%= render @vans %>
-  </tbody>
-</table>
+  <br>
 
-<br>
-
-<%= link_to 'Создать новый вагон', new_van_path %>
+  <%= link_to 'Создать новый вагон', new_van_path %>

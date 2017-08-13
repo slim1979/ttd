@@ -52,7 +52,7 @@ class VansController < ApplicationController
 
   # Never trust parameters from the scary internet, only allow the white list through.
   def van_params
-    params.require(:van).permit(:kind, :up_seats, :down_seats, :train_id)
+    params.require(:van).permit(:van_kind_id, :up_seats, :down_seats, :train_id)
   end
 
 end

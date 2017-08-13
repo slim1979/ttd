@@ -1,0 +1,11 @@
+<% @coupe_vans = Van.where(kind: 'Купе', train: @train) %>
+<% unless @coupe_vans.count.zero? %>
+  <p>
+  <strong>Купейных вагонов в составе поезда: </strong><%= @coupe_vans.count %><br />
+  Купейных мест:
+  <ul>
+    <li>Верхних: <%= @all = 0; @coupe_vans.each{ |van| @all += van.up_seats }; @all %></li>
+    <li>Нижних: <%= @all = 0; @coupe_vans.each{ |van| @all += van.down_seats }; @all %></li>
+  </ul>
+  </p>
+<% end %>

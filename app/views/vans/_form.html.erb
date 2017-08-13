@@ -2,8 +2,8 @@
   <%= render 'common/errors', resource: @van %>
 
   <div class="field">
-    <%= form.label :kind, 'Введите тип:' %>
-    <%= form.text_field :kind, id: :van_kind %>
+    <%= form.label :kind, 'Выберите тип:' %>
+    <%= form.collection_select :van_kind_id, VanKind.all, :id, :title %>
   </div>
 
   <div class="field">

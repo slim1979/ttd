@@ -3,26 +3,14 @@
 <p>
   <strong>Поезд номер:</strong>
   <%= @train.number %>
-</p>
 
-<p>
-  <strong>Вагоны поезда:</strong>
   <% if @train.vans.empty? %>
+    <br />
     К поезду не присоединены вагоны
   <% else %>
     <br />
-    Плацкартных: <%= Van.where(kind: 'Плацкарт').count %><br />
-    Купейных: <%= Van.where(kind: 'Купе').count %><br />
-    Плацкартных мест:
-    <ul>
-      <li>Верхних: <%= @all = 0; Van.where(kind: 'Плацкарт').each{ |van| @all += van.up_seats }; @all %></li>
-      <li>Нижних: <%= @all = 0; Van.where(kind: 'Плацкарт').each{ |van| @all += van.down_seats }; @all %></li>
-    </ul>
-    Купейных мест:
-    <ul>
-      <li>Верхних: <%= @all = 0; Van.where(kind: 'Купе').each{ |van| @all += van.up_seats }; @all %></li>
-      <li>Нижних: <%= @all = 0; Van.where(kind: 'Купе').each{ |van| @all += van.down_seats }; @all %></li>
-    </ul>
+    <%= render 'vans/platz_vans' %>
+    <%= render 'vans/coupe_vans' %>
   <% end %>
 </p>
 

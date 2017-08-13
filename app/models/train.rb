@@ -7,11 +7,11 @@ class Train < ApplicationRecord
   validates :number, presence: true
 
   def coupe_vans
-    vans.where(kind: 'Купе')
+    vans.where(kind: 'Купейный')
   end
 
   def platz_vans
-    vans.where(kind: 'Плацкарт')
+    vans.where(kind: 'Плацкартный')
   end
 
   def seats(type, kind)

@@ -1,9 +1,9 @@
 <% ['coupe', 'platz'].each do |type| %>
-  <% current_type = "#{ type == 'coupe' ? 'Купейных' : 'Плацкартных' }" %>
+  <% current_van_type = "#{ type == 'coupe' ? 'Купейных' : 'Плацкартных' }" %>
   <% unless @train.send("#{type}_vans").count.zero? %>
     <p>
-    <strong><%= current_type %> вагонов в составе поезда: </strong><%= @train.send("#{type}_vans").count %><br />
-    <%= current_type %> мест:
+    <strong><%= current_van_type %> вагонов в составе поезда: </strong><%= @train.send("#{type}_vans").count %><br />
+    <%= current_van_type %> мест:
     <ul>
       <li>Верхних: <%= @train.seats(type, 'up') %></li>
       <li>Нижних: <%= @train.seats(type, 'down') %></li>

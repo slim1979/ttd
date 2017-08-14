@@ -1,8 +1,8 @@
-<% type = {'Главная'          => 'root',
-           'Список станций'   => 'railway_stations',
-           'Список поездов'   => 'trains',
-           'Список вагонов'   => 'vans',
-           'Список маршрутов' => 'routes'} %>
+<% type = {'Главная'          => 'root_path',
+           'Список станций'   => 'railway_stations_path',
+           'Список поездов'   => 'trains_path',
+           'Список вагонов'   => 'vans_path',
+           'Список маршрутов' => 'routes_path'} %>
 <% type.each do |kind, path| %>
-  <%= link_to kind, send("#{path}_path") %>
+  <%= link_to kind, send("#{path}") %>
 <% end %>

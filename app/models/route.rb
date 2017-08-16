@@ -8,6 +8,18 @@ class Route < ApplicationRecord
 
   before_validation :set_title
 
+  def stations_sorted_to_increase
+    RailwayStationsRoute.where(route: self).increase.each do |relation|
+      railway_stations.find(relation.railway_station_id).title
+    end
+  end
+
+  def stations_sorted_to_decrease
+    RailwayStationsRoute.where(route: self).decrease.each do |relation|
+      railway_stations.find(relation.railway_station_id).title
+    end
+  end
+
   private
 
   def set_title
@@ -19,4 +31,5 @@ class Route < ApplicationRecord
   def stations_count
     errors.add(:base, 'Маршрут должен включать не менее 2-х станций') if railway_stations.size < 2
   end
+
 end

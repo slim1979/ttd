@@ -5,10 +5,11 @@ class RailwayStation < ApplicationRecord
 
   validates :title, presence: true
 
-  def add_index_on(route, index)
+  def set_index_on(route, index)
     station = RailwayStationsRoute.where(railway_station: self, route: route).first
     station.railway_station_index = index
-    station.save
+    station.save if index.is_a? Integer
+    raise ArgumentError, 'Индекс не может быть строкой' unless index.is_a? Integer
   end
 
   def show_index_on(route)

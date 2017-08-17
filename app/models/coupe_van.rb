@@ -1,0 +1,2 @@
+class CoupeVan < Van
+end

@@ -1,7 +1,6 @@
 <tr>
-  <td><%= van.id %></td>
-  <td><%= VanKind.where(van_type: van.type).first.title %></td>
-  <td><%= link_to 'Показать', van %></td>
-  <td><%= link_to 'Изменить', edit_van_path(van) %></td>
-  <td><%= link_to 'Удалить', van, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+  <td><%= resource.id %></td>
+  <td><%= link_to 'Показать', vans_path(resource) %></td>
+  <td><%= link_to 'Изменить', edit_van_path(resource) %></td>
+  <td><%= link_to 'Удалить', vans_path(resource), method: :delete, data: { confirm: 'Are you sure?' } %></td>
 </tr>

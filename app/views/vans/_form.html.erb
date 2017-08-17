@@ -3,18 +3,9 @@
 
   <div class="field">
     <%= form.label :kind, 'Выберите тип:' %>
-    <%= form.collection_select :van_kind_id, VanKind.all, :id, :title %>
+    <%= form.collection_select :van_kind_id, VanKind.all, :id, :van_kind %>
   </div>
 
-  <div class="field">
-    <%= form.label :up_seats, 'Верхних мест:' %>
-    <%= form.text_field :up_seats, id: :van_up_seats %>
-  </div>
-
-  <div class="field">
-    <%= form.label :down_seats, 'Нижних мест:' %>
-    <%= form.text_field :down_seats, id: :van_down_seats %>
-  </div>
 
   <div class="field">
     <%= form.label :train, 'Выберите поезд:' %>

@@ -2,18 +2,8 @@
   <%= render 'common/errors', resource: @van %>
 
   <div class="field">
-    <%= form.label :kind, 'Выберите тип:' %>
-    <%= form.collection_select :van_kind_id, VanKind.all, :id, :van_kind %>
-  </div>
-
-  <div class="field">
-    <%= form.label :up_seats, 'Верхних мест:' %>
-    <%= form.text_field :up_seats, id: :van_up_seats %>
-  </div>
-
-  <div class="field">
-    <%= form.label :down_seats, 'Нижних мест:' %>
-    <%= form.text_field :down_seats, id: :van_down_seats %>
+    <%= form.label :type, 'Выберите тип:' %>
+    <%= form.collection_select :type, VanKind.all, :van_type, :title %>
   </div>
 
   <div class="field">

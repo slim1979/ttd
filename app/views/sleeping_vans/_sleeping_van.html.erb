@@ -1,0 +1,9 @@
+<tr>
+    <%= sleeping_van.id %>
+    <%= sleeping_van.show_self_type %>
+    <%= sleeping_van.train.number %>
+    <% sleeping_van.seats_kind.each do |seats| %>
+      <%= sleeping_van.show_seats(seats) %> мест&nbsp<%= sleeping_van.send("#{seats}") %>
+    <% end %>
+</tr>
+<br />

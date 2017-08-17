@@ -1,0 +1,22 @@
+<%= form_for(@van) do |form| %>
+<p><strong>Поезд: </strong><%= @van.train.number %><br />
+<strong>Вагон: </strong><%= @van.id %></p>
+
+  <div class="field">
+    <%= form.label :kind, 'Выберите тип:' %>
+    <%= form.collection_select :type, VanKind.all, :van_type, :title %>
+  </div>
+
+  <% @van.show_seats.each do |seats| %>
+    <% places = { top_seats: 'Верхних', bottom_seats: 'Нижних', side_top_seats: 'Верхних боковых',
+                  side_bottom_seats: 'Нижних боковых', seats: 'Сидячих' } %>
+    <div class="field">
+      <%= form.label seats, places[seats] %>
+      <%= form.text_field seats %>
+    </div>
+  <% end %>
+
+  <div class="actions">
+    <%= form.submit 'Изменить вагон' %>
+  </div>
+<% end %>

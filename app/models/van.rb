@@ -1,6 +1,5 @@
 class Van < ApplicationRecord
   belongs_to :train
-  belongs_to :van_kind
 
   def show_seats
     van_seats = { 'SedentaryVans' => %i[seats],

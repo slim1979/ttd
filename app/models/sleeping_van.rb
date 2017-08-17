@@ -1,0 +1,2 @@
+class SleepingVan < Van
+end

@@ -1,3 +1,3 @@
 class SedentaryVan < Van
-  validates :seats, presence: true
+  # validates :seats, presence: true
 end

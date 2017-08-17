@@ -10,7 +10,17 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170816144518) do
+ActiveRecord::Schema.define(version: 20170817082444) do
+
+  create_table "coupe_vans", force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "platz_vans", force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "railway_stations", force: :cascade do |t|
     t.string "title"
@@ -26,6 +36,16 @@ ActiveRecord::Schema.define(version: 20170816144518) do
 
   create_table "routes", force: :cascade do |t|
     t.string "title"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "sedentary_vans", force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "sleeping_vans", force: :cascade do |t|
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -57,14 +77,17 @@ ActiveRecord::Schema.define(version: 20170816144518) do
   end
 
   create_table "van_kinds", force: :cascade do |t|
-    t.string "title"
+    t.string "van_kind"
   end
 
   create_table "vans", force: :cascade do |t|
-    t.string "kind"
-    t.integer "up_seats"
-    t.integer "down_seats"
     t.integer "train_id"
+    t.integer "top_seats"
+    t.integer "bottom_seats"
+    t.integer "side_top_seats"
+    t.integer "side_bottom_seats"
+    t.integer "seats"
+    t.string "type"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "van_kind_id"

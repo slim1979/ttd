@@ -77,7 +77,8 @@ ActiveRecord::Schema.define(version: 20170817082444) do
   end
 
   create_table "van_kinds", force: :cascade do |t|
-    t.string "van_kind"
+    t.string "title"
+    t.string "van_type"
   end
 
   create_table "vans", force: :cascade do |t|

@@ -1,9 +1,1 @@
-<tr>
-  <%= coupe_van.id %>
-  <%= coupe_van.show_self_type %>
-  <%= coupe_van.train.number %>
-  <% coupe_van.seats_kind.each do |seats| %>
-    <%= coupe_van.show_seats(seats) %> мест&nbsp<%= coupe_van.send("#{seats}") %>
-  <% end %>
-</tr>
-<br />
+<%= render 'vans/van', resource: coupe_van %>

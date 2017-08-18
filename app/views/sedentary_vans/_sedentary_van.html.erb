@@ -1,9 +1,1 @@
-<tr>
-    <%= sedentary_van.id %>
-    <%= sedentary_van.show_self_type %>
-    <%= sedentary_van.train.number %>
-    <% sedentary_van.seats_kind.each do |seats| %>
-      <%= sedentary_van.show_seats(seats) %> мест&nbsp<%= sedentary_van.send("#{seats}") %>
-    <% end %>
-</tr>
-<br />
+<%= render 'vans/van', resource: sedentary_van %>

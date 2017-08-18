@@ -1,8 +1,8 @@
 <tr>
-  <p>
     <% if @train %>
       <td><%= link_to "##{resource.number}", van_path(resource) %></td>
     <% else %>
+    <p>      
       <td><%= link_to 'Показать', van_path(resource) %></td>
       <td><%= link_to 'Изменить', edit_van_path(resource) %></td>
       <td><%= link_to 'Удалить', van_path(resource), method: :delete, data: { confirm: 'Are you sure?' } %></td>
@@ -10,6 +10,6 @@
       <td>Тип: <%= resource.show_self_type %></td>
       <td>#<%= resource.number %></td>
       <td>Места: <%= render 'vans/seats', resource: resource %></td>
+    </p>
     <% end %>
-  </p>
 </tr>

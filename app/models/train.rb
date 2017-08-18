@@ -21,6 +21,9 @@ class Train < ApplicationRecord
   end
 
   def sort_vans
-    Van.where(train: self).order(number: self.sort_by.to_sym)
+    vans.order(number: sort_by.to_sym)
+  end
+
+  def adv_info
   end
 end

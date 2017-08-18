@@ -9,7 +9,7 @@
     К поезду не присоединены вагоны
   <% else %>
     <br />
-    <%= render 'vans/vans_kind', train: @train %>
+    <%= render @train.vans, train: @train %>
   <% end %>
 </p>
 

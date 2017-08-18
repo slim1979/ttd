@@ -26,7 +26,13 @@ class Van < ApplicationRecord
   private
 
   def set_number
-    self.number = 1 if train.vans.count.zero?
-    self.number = train.vans.last.number + 1 unless train.vans.count.zero?
+    self.number ||= 1 if train.vans.count.zero?
+    self.number ||= train.vans.last.number + 1 unless train.vans.count.zero?
+  end
+
+  def set_seats
+    seats_kind.each do |seats|
+      send("#{seats}=",0) if self.new_record?
+    end
   end
 end

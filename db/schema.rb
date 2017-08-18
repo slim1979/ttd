@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170817082444) do
+ActiveRecord::Schema.define(version: 20170817082058) do
 
   create_table "coupe_vans", force: :cascade do |t|
     t.datetime "created_at", null: false
@@ -88,12 +88,11 @@ ActiveRecord::Schema.define(version: 20170817082444) do
     t.integer "side_top_seats"
     t.integer "side_bottom_seats"
     t.integer "seats"
+    t.integer "number"
     t.string "type"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.integer "van_kind_id"
     t.index ["train_id"], name: "index_vans_on_train_id"
-    t.index ["van_kind_id"], name: "index_vans_on_van_kind_id"
   end
 
 end

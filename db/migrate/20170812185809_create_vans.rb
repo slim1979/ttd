@@ -7,6 +7,7 @@ class CreateVans < ActiveRecord::Migration[5.1]
       t.integer :side_top_seats
       t.integer :side_bottom_seats
       t.integer :seats
+      t.integer :number
       t.string :type
       t.timestamps
     end

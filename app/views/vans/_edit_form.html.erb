@@ -1,4 +1,4 @@
-<%= form_for(@van) do |form| %>
+<%= form_for(@van.becomes(Van)) do |form| %>
 <p><strong>Поезд: </strong><%= @van.train.number %><br />
 <strong>Вагон: </strong><%= @van.id %></p>
 
@@ -7,11 +7,9 @@
     <%= form.collection_select :type, VanKind.all, :van_type, :title %>
   </div>
 
-  <% @van.show_seats.each do |seats| %>
-    <% places = { top_seats: 'Верхних', bottom_seats: 'Нижних', side_top_seats: 'Верхних боковых',
-                  side_bottom_seats: 'Нижних боковых', seats: 'Сидячих' } %>
+  <% @van.seats_kind.each do |seats| %>
     <div class="field">
-      <%= form.label seats, places[seats] %>
+      <%= form.label seats, @van.show_seats(seats) %>
       <%= form.text_field seats %>
     </div>
   <% end %>

@@ -10,11 +10,11 @@
   <% else %>
     <br />
     <%= form_for(@train) do |form| %>
-      <div><%= form.radio_button(:sort_by, "increase") %>С головы
-                      <%= form.radio_button(:sort_by, "decrease") %>С хвоста
+      <div><%= form.radio_button(:sort_by, "asc") %>К большему
+                      <%= form.radio_button(:sort_by, "desc") %>К меньшему
                       <%= form.submit 'Сортировать' %></div>
       <br />
-    <%= render @train.vans, train: @train %>
+    <%= render @train.sort_vans, train: @train %>
     <% end %>
   <% end %>
 </p>

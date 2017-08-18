@@ -19,6 +19,17 @@
   <% end %>
 </p>
 <p>
+  Вы можете указать тип вагона и интересующие Вас места для получения информации о них
+  <%= form_for(@train) do |form| %>
+    <%= form.label :van_type_to_more_info, 'Выберите тип вагона:' %>
+    <%= form.collection_select :van_type_to_more_info, VanKind.all, :van_type, :title %>
+    <%= form.label :places_type_to_more_info, 'Выберите тип мест:' %>
+    <%= form.collection_select :places_type_to_more_info, SeatsKind.all, :seats_type, :title %>
+    <p><%= form.submit 'Найти' %></p>
+  <% end %>
+  <%= @train.adv_info %>
+</p>
+<p>
   <strong>Текущий маршрут:</strong>
   <% if @train.route %>
     <%= @train.route.title %>

@@ -1,0 +1,2 @@
+class SeatsKind < ApplicationRecord
+end

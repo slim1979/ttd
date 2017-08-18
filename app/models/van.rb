@@ -1,6 +1,9 @@
 class Van < ApplicationRecord
   belongs_to :train
 
+  validates :number, uniqueness: { scope: :train_id }
+  before_save :set_number
+
   def seats_kind
     van_seats = { 'SedentaryVan' => %i[seats],
                   'PlatzVan'      => %i[top_seats bottom_seats side_top_seats side_bottom_seats],
@@ -16,7 +19,14 @@ class Van < ApplicationRecord
   end
 
   def show_self_type
-    type = { CoupeVan: 'Купейный', PlatzVan: 'Плацкартный', SleepingVan: 'Спальный', SedentaryVans: 'Сидячий' }
+    type = { CoupeVan: 'Купейный', PlatzVan: 'Плацкартный', SleepingVan: 'Спальный', SedentaryVan: 'Сидячий' }
     type[self.type.to_sym]
+  end
+
+  private
+
+  def set_number
+    self.number = 1 if train.vans.count.zero?
+    self.number = train.vans.last.number + 1 unless train.vans.count.zero?
   end
 end

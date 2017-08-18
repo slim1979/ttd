@@ -4,7 +4,8 @@
   <strong>Вагон номер:</strong>
   <%= @van.id %><br />
   <strong>Тип вагона:</strong>
-  <%= VanKind.where(van_type: @van.type).first.title %>
+  <%= @van.show_self_type %><br />
+  <%= render 'seats', resource: @van %>
 </p>
 
 <p>

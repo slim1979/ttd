@@ -1,11 +1,11 @@
 <tr>
-  <td><%= resource.id %></td>
-  <td><%= resource.show_self_type %></td>
-  <td><%= resource.train.number %></td>
-  <% resource.seats_kind.each do |seats| %></td>
-    <td><%= resource.show_seats(seats) %> мест&nbsp<%= resource.send("#{seats}") %></td>
-  <% end %>
-  <td><%= link_to 'Показать', van_path(resource) %></td>
-  <td><%= link_to 'Изменить', edit_van_path(resource) %></td>
-  <td><%= link_to 'Удалить', van_path(resource), method: :delete, data: { confirm: 'Are you sure?' } %></td>
+  <p>
+    <td><%= link_to 'Показать', van_path(resource) %></td>
+    <td><%= link_to 'Изменить', edit_van_path(resource) %></td>
+    <td><%= link_to 'Удалить', van_path(resource), method: :delete, data: { confirm: 'Are you sure?' } %></td>
+    <td><%= resource.id %></td>
+    <td><%= resource.show_self_type %></td>
+    <td><%= resource.train.number unless @train %></td>
+    <td><%= render 'vans/seats', resource: resource %></td>
+  </p>
 </tr>

@@ -19,4 +19,8 @@ class Train < ApplicationRecord
     send("#{type}_vans").each { |van| all += van.send("#{kind}_seats") }
     all
   end
+
+  def sort_vans
+    Van.where(train: self).order(number: self.sort_by.to_sym)
+  end
 end

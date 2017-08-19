@@ -8,13 +8,13 @@
     <br />
     К поезду не присоединены вагоны
   <% else %>
-    <br />
+  <br /> 
+  <strong>Вагоны:</strong>
+  <%= render @train.sort_vans, train: @train %>
     <%= form_for(@train) do |form| %>
       <div><%= form.radio_button(:sort_by, "asc") %>В сторону увеличения
                       <%= form.radio_button(:sort_by, "desc") %>В сторону уменьшения
                       <%= form.submit 'Сортировать' %></div>
-      <br />
-    <%= render @train.sort_vans, train: @train %>
     <% end %>
 </p>
 <p>

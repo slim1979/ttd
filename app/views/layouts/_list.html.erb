@@ -4,5 +4,5 @@
            'Список поездов'   => 'trains_path',
            'Список вагонов'   => 'vans_path'} %>
 <% type.each do |kind, path| %>
-  <%= link_to kind, send("#{path}") %>
+  <%= link_to kind, send(path) %>
 <% end %>

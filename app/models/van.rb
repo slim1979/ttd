@@ -1,7 +1,7 @@
 class Van < ApplicationRecord
   TYPE = { CoupeVan: 'Купейный', PlatzVan: 'Плацкартный',
            SleepingVan: 'Спальный', SedentaryVan: 'Сидячий' }.freeze
-  VAN_SEATS = { 'SedentaryVan' => %i[seats],
+  VAN_SEATS_KIND = { 'SedentaryVan' => %i[seats],
                 'PlatzVan'      => %i[top_seats bottom_seats side_top_seats side_bottom_seats],
                 'CoupeVan'      => %i[top_seats bottom_seats],
                 'SleepingVan'   => %i[bottom_seats] }.freeze
@@ -15,7 +15,7 @@ class Van < ApplicationRecord
   before_save :set_number
 
   def seats_kind
-    VAN_SEATS[type]
+    VAN_SEATS_KIND[type]
   end
 
   def show_seats(key)

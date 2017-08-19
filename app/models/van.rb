@@ -1,12 +1,12 @@
 class Van < ApplicationRecord
   TYPE = { CoupeVan: 'Купейный', PlatzVan: 'Плацкартный',
            SleepingVan: 'Спальный', SedentaryVan: 'Сидячий' }.freeze
-  VAN_SEATS = { 'SedentaryVan' => %i[seats],
-                'PlatzVan'      => %i[top_seats bottom_seats side_top_seats side_bottom_seats],
-                'CoupeVan'      => %i[top_seats bottom_seats],
-                'SleepingVan'   => %i[bottom_seats] }.freeze
-  PLACES =  { top_seats: 'Верхних', bottom_seats: 'Нижних', side_top_seats: 'Верхних боковых',
-              side_bottom_seats: 'Нижних боковых', seats: 'Сидячих' }
+  VAN_SEATS_KIND = { 'SedentaryVan' => %i[seats],
+                     'PlatzVan'      => %i[top_seats bottom_seats side_top_seats side_bottom_seats],
+                     'CoupeVan'      => %i[top_seats bottom_seats],
+                     'SleepingVan'   => %i[bottom_seats] }.freeze
+  PLACES = { top_seats: 'Верхних', bottom_seats: 'Нижних', side_top_seats: 'Верхних боковых',
+              side_bottom_seats: 'Нижних боковых', seats: 'Сидячих' }.freeze
 
   belongs_to :train
 
@@ -15,7 +15,7 @@ class Van < ApplicationRecord
   before_save :set_number
 
   def seats_kind
-    VAN_SEATS[type]
+    VAN_SEATS_KIND[type]
   end
 
   def show_seats(key)

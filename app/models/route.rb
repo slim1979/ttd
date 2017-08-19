@@ -9,15 +9,15 @@ class Route < ApplicationRecord
   before_validation :set_title
 
   def stations_sorted_to_increase
-    RailwayStationsRoute.where(route: self).increase.each do |relation|
-      railway_stations.find(relation.railway_station_id).title
-    end
+    stations = {}
+    railway_stations_routes.increase.each { |r| stations[r.railway_station] = r.railway_station_index }
+    stations
   end
 
   def stations_sorted_to_decrease
-    RailwayStationsRoute.where(route: self).decrease.each do |relation|
-      railway_stations.find(relation.railway_station_id).title
-    end
+    stations = {}
+    railway_stations_routes.decrease.each { |r| stations[r.railway_station] = r.railway_station_index }
+    stations
   end
 
   private

@@ -1,8 +1,8 @@
-<% @route.stations_sorted_to_decrease.each do |station| %>
+<% @route.stations_sorted_to_decrease.each do |station, index| %>
 <ul>
   <li>
-    <%= station.railway_station_index %>
-    <%= @route.railway_stations.find(station.railway_station_id).title %>
+    <%= index %>
+    <%= station.title %>
   </li>
 </ul>
 <% end %>

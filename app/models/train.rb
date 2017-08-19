@@ -22,7 +22,7 @@ class Train < ApplicationRecord
   end
 
   def set_sort_by
-    self.sort_by = 'asc' if self.new_record?
+    self.sort_by = 'asc' if new_record?
   end
 
   def sort_vans
@@ -37,22 +37,15 @@ class Train < ApplicationRecord
   # in show template
   def vans_collection
     collection = []
-    vans.map(&:type).uniq.each do |type|
-      collection << Van::TYPE[type.to_sym]
-    end
+    vans.map(&:type).uniq.each { |type| collection << Van::TYPE[type.to_sym] }
     collection
   end
 
   # returns amount of requirement seats
   def adv_info
-    if places_type_to_more_info && van_type_to_more_info
-      seats = places_type_to_more_info.to_sym
-      van = van_type_to_more_info.to_sym
-      if van_has_such_seats?(van, seats)
-        vans.where(type: van).map(&seats).sum if van_has_such_seats?(van, seats)
-      else
-        'В вагоне этого типа нет таких мест'
-      end
-    end
+    seats = places_type_to_more_info.to_sym if places_type_to_more_info
+    van = van_type_to_more_info.to_sym if van_type_to_more_info
+    vans.where(type: van).map(&seats).sum if van_has_such_seats?(van, seats)
+    'В вагоне этого типа нет таких мест' unless van_has_such_seats?(van, seats)
   end
 end

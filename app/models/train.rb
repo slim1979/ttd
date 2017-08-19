@@ -30,17 +30,28 @@ class Train < ApplicationRecord
   end
 
   def van_has_such_seats?(van, seats)
-    vans.where(type: van).map(&seats).include? nil
+    !vans.where(type: van).map(&seats).include? nil
   end
 
+  # vans collection with uniq values to collection select
+  # in show template
+  def vans_collection
+    collection = []
+    vans.map(&:type).uniq.each do |type|
+      collection << Van::TYPE[type.to_sym]
+    end
+    collection
+  end
+
+  # returns amount of requirement seats
   def adv_info
     if places_type_to_more_info && van_type_to_more_info
       seats = places_type_to_more_info.to_sym
       van = van_type_to_more_info.to_sym
       if van_has_such_seats?(van, seats)
-        'В вагоне этого типа нет таких мест'
+        vans.where(type: van).map(&seats).sum if van_has_such_seats?(van, seats)
       else
-        vans.where(type: van).map(&seats).sum unless van_has_such_seats?(van, seats)
+        'В вагоне этого типа нет таких мест'
       end
     end
   end

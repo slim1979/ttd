@@ -1,4 +1,7 @@
 class Van < ApplicationRecord
+  TYPE = { CoupeVan: 'Купейный', PlatzVan: 'Плацкартный',
+           SleepingVan: 'Спальный', SedentaryVan: 'Сидячий' }.freeze
+
   belongs_to :train
 
   validates :number, uniqueness: { scope: :train_id }
@@ -15,25 +18,28 @@ class Van < ApplicationRecord
 
   def show_seats(key)
     places = { top_seats: 'Верхних', bottom_seats: 'Нижних', side_top_seats: 'Верхних боковых',
-                side_bottom_seats: 'Нижних боковых', seats: 'Сидячих' }
+               side_bottom_seats: 'Нижних боковых', seats: 'Сидячих' }
     places[key]
   end
 
   def show_self_type
-    type = { CoupeVan: 'Купейный', PlatzVan: 'Плацкартный', SleepingVan: 'Спальный', SedentaryVan: 'Сидячий' }
-    type[self.type.to_sym]
+    TYPE[type.to_sym]
   end
 
   private
 
+  def last_van_number
+    train.vans.order(:number).last.number
+  end
+
   def set_number
     self.number ||= 1 if train.vans.count.zero?
-    self.number ||= train.vans.order(:number).last.number + 1 unless train.vans.count.zero?
+    self.number ||= last_van_number + 1 unless train.vans.count.zero?
   end
 
   def set_seats
     seats_kind.each do |seats|
-      send("#{seats}=",0) if self.new_record?
+      send("#{seats}=", 0) if new_record?
     end
   end
 end

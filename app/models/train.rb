@@ -43,15 +43,10 @@ class Train < ApplicationRecord
     van = van_type_to_more_info.to_sym if van_type_to_more_info
     van_seats = vans.where(type: van).map(&seats)
     type_mismatch = van_seats.include? nil
-<<<<<<< 912c62a27d23ad74d25a4e674575ce2c2af0e854
-    'В вагоне этого типа нет таких мест' if type_mismatch
-    van_seats.sum unless type_mismatch
-=======
     if type_mismatch
       'В вагоне этого типа нет таких мест'
     else
       van_seats.sum
     end
->>>>>>> merge conflict
   end
 end

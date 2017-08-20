@@ -2,9 +2,10 @@
 
 <p>
   <strong>Вагон номер:</strong>
-  <%= @van.id %><br />
+  <%= @van.number %><br />
   <strong>Тип вагона:</strong>
-  <%= @van.van_kind.title %>
+  <%= @van.show_self_type %><br />
+  <%= render 'seats', resource: @van %>
 </p>
 
 <p>
@@ -16,5 +17,5 @@
   <% end %>
 </p>
 
-<%= link_to 'Редактировать', edit_van_path(@van) %> |
+<%= link_to 'Редактировать', edit_van_path(@van) %>
 <%= link_to 'Назад', vans_path %>

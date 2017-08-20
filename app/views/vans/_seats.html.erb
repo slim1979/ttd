@@ -1,0 +1,3 @@
+<% resource.seats_kind.each do |seats| %>
+  <td><%= resource.show_seats(seats) %> мест&nbsp<%= resource.send("#{seats}") %></td>
+<% end %>

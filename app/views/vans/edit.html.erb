@@ -1,6 +1,25 @@
 <h1>Изменить вагон</h1>
 
-<%= render 'form'%>
+<%= form_for(@van.becomes(Van)) do |form| %>
+<p><strong>Поезд: </strong><%= @van.train.number %><br />
+<strong>Вагон: </strong><%= @van.number %></p>
 
-<%= link_to 'Показать', @van %> |
+  <div class="field">
+    <%= form.label :kind, 'Выберите тип:' %>
+    <%= form.collection_select :type, VanKind.all, :van_type, :title %>
+  </div>
+
+  <% @van.seats_kind.each do |seats| %>
+    <div class="field">
+      <%= form.label seats, @van.show_seats(seats) + ' мест'%>
+      <%= form.text_field seats %>
+    </div>
+  <% end %>
+
+  <div class="actions">
+    <%= form.submit 'Изменить вагон' %>
+  </div>
+<% end %>
+
+<%= link_to 'Показать', van_path(@van) %> |
 <%= link_to 'Назад', vans_path %>

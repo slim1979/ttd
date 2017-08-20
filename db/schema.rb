@@ -10,23 +10,47 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170813221519) do
+ActiveRecord::Schema.define(version: 20170818130800) do
+
+  create_table "coupe_vans", force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "platz_vans", force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "railway_stations", force: :cascade do |t|
     t.string "title"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.integer "route_id"
-    t.index ["route_id"], name: "index_railway_stations_on_route_id"
   end
 
   create_table "railway_stations_routes", force: :cascade do |t|
     t.integer "railway_station_id"
     t.integer "route_id"
+    t.integer "railway_station_index"
   end
 
   create_table "routes", force: :cascade do |t|
     t.string "title"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "seats_kinds", force: :cascade do |t|
+    t.string "title"
+    t.string "seats_type"
+  end
+
+  create_table "sedentary_vans", force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "sleeping_vans", force: :cascade do |t|
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -48,6 +72,9 @@ ActiveRecord::Schema.define(version: 20170813221519) do
     t.datetime "updated_at", null: false
     t.integer "current_station_id"
     t.integer "route_id"
+    t.string "sort_by"
+    t.string "van_type_to_more_info"
+    t.string "places_type_to_more_info"
     t.index ["current_station_id"], name: "index_trains_on_current_station_id"
     t.index ["route_id"], name: "index_trains_on_route_id"
   end
@@ -59,18 +86,21 @@ ActiveRecord::Schema.define(version: 20170813221519) do
 
   create_table "van_kinds", force: :cascade do |t|
     t.string "title"
+    t.string "van_type"
   end
 
   create_table "vans", force: :cascade do |t|
-    t.string "kind"
-    t.integer "up_seats"
-    t.integer "down_seats"
     t.integer "train_id"
+    t.integer "top_seats"
+    t.integer "bottom_seats"
+    t.integer "side_top_seats"
+    t.integer "side_bottom_seats"
+    t.integer "seats"
+    t.integer "number"
+    t.string "type"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.integer "van_kind_id"
     t.index ["train_id"], name: "index_vans_on_train_id"
-    t.index ["van_kind_id"], name: "index_vans_on_van_kind_id"
   end
 
 end

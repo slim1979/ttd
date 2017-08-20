@@ -1,6 +1,5 @@
 class VansController < ApplicationController
   before_action :set_van, only: %i[show edit update destroy]
-
   # GET /vans
   def index
     @vans = Van.all
@@ -22,7 +21,7 @@ class VansController < ApplicationController
     @van = Van.new(van_params)
 
     if @van.save
-      redirect_to @van, notice: 'Вагон успешно создан.'
+      redirect_to vans_path(@van), notice: 'Вагон успешно создан.'
     else
       render :new
     end
@@ -31,7 +30,7 @@ class VansController < ApplicationController
   # PATCH/PUT /vans/1
   def update
     if @van.update(van_params)
-      redirect_to @van, notice: 'Вагон успешно обновлен.'
+      redirect_to vans_path(@van), notice: 'Вагон успешно обновлен.'
     else
       render :edit
     end
@@ -52,7 +51,8 @@ class VansController < ApplicationController
 
   # Never trust parameters from the scary internet, only allow the white list through.
   def van_params
-    params.require(:van).permit(:van_kind_id, :up_seats, :down_seats, :train_id)
+    params.require(:van).permit(:van_kind_id, :top_seats, :bottom_seats, :side_top_seats, :side_bottom_seats, :seats, :train_id, :type)
   end
+
 
 end

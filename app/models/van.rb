@@ -2,19 +2,11 @@ class Van < ApplicationRecord
   TYPE = { CoupeVan: 'Купейный', PlatzVan: 'Плацкартный',
            SleepingVan: 'Спальный', SedentaryVan: 'Сидячий' }.freeze
   VAN_SEATS_KIND = { 'SedentaryVan' => %i[seats],
-<<<<<<< HEAD
                 'PlatzVan'      => %i[top_seats bottom_seats side_top_seats side_bottom_seats],
                 'CoupeVan'      => %i[top_seats bottom_seats],
                 'SleepingVan'   => %i[bottom_seats] }.freeze
   PLACES =  { top_seats: 'Верхних', bottom_seats: 'Нижних', side_top_seats: 'Верхних боковых',
               side_bottom_seats: 'Нижних боковых', seats: 'Сидячих' }
-=======
-                     'PlatzVan'      => %i[top_seats bottom_seats side_top_seats side_bottom_seats],
-                     'CoupeVan'      => %i[top_seats bottom_seats],
-                     'SleepingVan'   => %i[bottom_seats] }.freeze
-  PLACES = { top_seats: 'Верхних', bottom_seats: 'Нижних', side_top_seats: 'Верхних боковых',
-              side_bottom_seats: 'Нижних боковых', seats: 'Сидячих' }.freeze
->>>>>>> 4e8f1431dfee518ba47db15ce0779e44113796a6
 
   belongs_to :train
 

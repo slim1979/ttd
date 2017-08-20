@@ -11,7 +11,7 @@
 
   <% @van.seats_kind.each do |seats| %>
     <div class="field">
-      <%= form.label seats, @van.show_seats(seats) %>
+      <%= form.label seats, @van.show_seats(seats) + ' мест'%>
       <%= form.text_field seats %>
     </div>
   <% end %>
